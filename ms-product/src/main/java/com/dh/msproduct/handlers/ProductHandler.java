@@ -26,8 +26,6 @@ public class ProductHandler {
     private final IProductService service;
     private final Validator validator;
 
-    private String path;
-
     public Mono<ServerResponse> listar(ServerRequest request) {
         return ServerResponse
                 .ok()
