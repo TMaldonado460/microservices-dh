@@ -50,7 +50,25 @@ public class RouterFunctionConfig {
                             }
                     )
             ),
-            @RouterOperation(path = PRODUCT_ID, beanClass = ProductHandler.class, beanMethod = "ver"),
+            @RouterOperation(path = PRODUCT_ID,
+                    beanClass = ProductHandler.class,
+                    beanMethod = "ver",
+                    produces = {
+                            MediaType.APPLICATION_JSON_VALUE
+                    },
+                    operation = @Operation(
+                            operationId = "loadProduct",
+                            responses = {
+                                    @ApiResponse(
+                                            responseCode = "200",
+                                            description = "successful operation",
+                                            content = @Content(schema = @Schema(
+                                                    implementation = Product.class
+                                            ))
+                                    )
+                            }
+                    )
+            ),
             @RouterOperation(path = PRODUCT, beanClass = ProductHandler.class, beanMethod = "crear"),
             @RouterOperation(path = PRODUCT_ID, beanClass = ProductHandler.class, beanMethod = "editar"),
             @RouterOperation(path = PRODUCT_ID, beanClass = ProductHandler.class, beanMethod = "eliminar")})
@@ -59,7 +77,6 @@ public class RouterFunctionConfig {
                 .andRoute(GET(PRODUCT_ID), handler::ver)
                 .andRoute(POST(PRODUCT), handler::crear)
                 .andRoute(PUT(PRODUCT_ID), handler::actualizar)
-                .andRoute(DELETE(PRODUCT_ID), handler::eliminar)
-                ;
+                .andRoute(DELETE(PRODUCT_ID), handler::eliminar);
     }
 }
