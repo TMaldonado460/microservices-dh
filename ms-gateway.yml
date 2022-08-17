@@ -7,10 +7,10 @@ server:
     gateway:
       routes:
         id: route-products
-        uri: http://localhost:6969
+        uri: lb://MS-PRODUCT
         predicates:
           Path: /api/v1/products/**
         id: route-user
-        uri: lb://ms-user
+        uri: http://localhost:6969
         predicates:
           Path: /api/v1/user/**
