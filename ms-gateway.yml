@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+
+server:
+  cloud:
+    gateway:
+      routes:
+        id: route-products
+        uri: lb://MS-PRODUCT
+        predicates:
+          Path: /product/**
+        id: route-user
+        uri: lb://ms-user
+        predicates:
+          Path: /user/**
