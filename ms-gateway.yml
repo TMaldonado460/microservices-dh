@@ -6,8 +6,8 @@ server:
         id: route-products
         uri: lb://MS-PRODUCT
         predicates:
-          Path: /api/v1/products**
+          Path: /api/v1/products/**
         id: route-user
         uri: http://localhost:6969
         predicates:
-          Path: /api/v1/users*
+          Path: /api/v1/users/**
